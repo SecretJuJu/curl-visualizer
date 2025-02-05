@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURL 시각화 도구</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <h2>CURL 명령어 입력</h2>
+            <textarea id="curlInput" placeholder="curl 명령어를 여기에 입력하세요..."></textarea>
+            <button onclick="parseCurl()">파싱하기</button>
+        </div>
+
+        <div class="request-section">
+            <h2>요청 정보</h2>
+            <div class="form-group">
+                <label>메서드:</label>
+                <select id="method">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELETE</option>
+                    <option value="PATCH">PATCH</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>URL:</label>
+                <input type="text" id="url">
+            </div>
+
+            <div class="form-group">
+                <label>헤더:</label>
+                <div id="headers" class="headers-container">
+                    <div class="header-row">
+                        <input type="text" placeholder="키">
+                        <input type="text" placeholder="값">
+                        <button onclick="addHeader()">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>요청 본문:</label>
+                <textarea id="requestBody"></textarea>
+            </div>
+
+            <button onclick="sendRequest()">요청 보내기</button>
+        </div>
+
+        <div class="response-section">
+            <h2>응답</h2>
+            <div class="response-info">
+                <div>상태 코드: <span id="statusCode"></span></div>
+                <div>응답 시간: <span id="responseTime"></span></div>
+            </div>
+            <div class="response-body">
+                <pre id="responseBody"></pre>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

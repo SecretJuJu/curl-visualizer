@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURL Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar - JWT Tools -->
+        <div class="sidebar">
+            <div class="jwt-section">
+                <h2>JWT Tools</h2>
+                <div class="jwt-tabs">
+                    <button onclick="showJwtTab('encode')" class="active">Encode</button>
+                    <button onclick="showJwtTab('decode')">Decode</button>
+                </div>
+                <div id="jwt-encode" class="jwt-content">
+                    <div class="form-group">
+                        <label>Payload (JSON):</label>
+                        <textarea id="jwtPayload" placeholder="Enter JWT payload in JSON format"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Secret Key:</label>
+                        <input type="password" id="jwtSecret">
+                        <button onclick="toggleSecretVisibility('jwtSecret')" class="toggle-secret">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <label>Algorithm:</label>
+                        <select id="jwtAlgorithm">
+                            <option value="HS256">HS256</option>
+                            <option value="HS384">HS384</option>
+                            <option value="HS512">HS512</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="extendExpiry">
+                            Set expiry to year 2999
+                        </label>
+                    </div>
+                    <button onclick="encodeJWT()">Encode</button>
+                    <div class="jwt-result">
+                        <label>Result:</label>
+                        <textarea id="jwtResult" readonly></textarea>
+                        <button onclick="copyToClipboard('jwtResult')">Copy</button>
+                    </div>
+                </div>
+                <div id="jwt-decode" class="jwt-content" style="display: none;">
+                    <div class="form-group">
+                        <label>JWT Token:</label>
+                        <textarea id="jwtToken" placeholder="Enter JWT token"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Secret Key:</label>
+                        <div class="secret-input-group">
+                            <input type="password" id="jwtDecodeSecret">
+                            <button onclick="toggleSecretVisibility('jwtDecodeSecret')" class="toggle-secret">
+                                <span class="eye-icon">👁️</span>
+                            </button>
+                        </div>
+                        <small>* Secret key is optional. If provided, signature will be verified.</small>
+                    </div>
+                    <button onclick="decodeJWT()">Decode</button>
+                    <div class="jwt-result">
+                        <label>Payload:</label>
+                        <textarea id="jwtDecodeResult" readonly></textarea>
+                        <div id="verificationStatus" class="verification-status"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="input-section">
+                <h2>CURL Command Input</h2>
+                <textarea id="curlInput" placeholder="Enter your curl command here..."></textarea>
+                <button onclick="parseCurl()">Parse</button>
+            </div>
+
+            <div class="request-section">
+                <div class="request-header">
+                    <h2>Request Details</h2>
+                    <div class="save-request">
+                        <input type="text" id="requestName" placeholder="Request name">
+                        <button onclick="saveRequest()">Save Current Request</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Method:</label>
+                    <select id="method">
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                        <option value="PUT">PUT</option>
+                        <option value="DELETE">DELETE</option>
+                        <option value="PATCH">PATCH</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>URL:</label>
+                    <input type="text" id="url">
+                </div>
+
+                <div class="form-group">
+                    <label>Headers:</label>
+                    <div id="headers" class="headers-container">
+                        <div class="header-row">
+                            <input type="text" placeholder="Key">
+                            <input type="text" placeholder="Value">
+                            <button onclick="addHeader()">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Request Body:</label>
+                    <textarea id="requestBody"></textarea>
+                </div>
+
+                <button onclick="sendRequest()" class="send-button">Send Request</button>
+            </div>
+
+            <div class="saved-requests-section">
+                <h2>Saved Requests</h2>
+                <div class="requests-list">
+                    <table id="requestsTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Method</th>
+                                <th>URL</th>
+                                <th>Created At</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="response-section">
+                <h2>Response</h2>
+                <div class="response-info">
+                    <div>Status Code: <span id="statusCode"></span></div>
+                    <div>Response Time: <span id="responseTime"></span></div>
+                </div>
+                <div class="response-body">
+                    <pre id="responseBody"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

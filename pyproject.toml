@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "curl-visualizer"
+version = "0.1.0"
+description = "CURL command visualizer with JWT tools"
+authors = ["Your Name <your.email@example.com>"]
+packages = []  # 패키지 모드 비활성화
+
+[tool.poetry.dependencies]
+python = "^3.9"
+flask = "^2.0.1"
+flask-cors = "^4.0.0"
+requests = "^2.31.0"
+PyJWT = "^2.8.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+black = "^23.7.0"
+flake8 = "^6.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api" 

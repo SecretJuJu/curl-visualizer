@@ -1,0 +1,309 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.input-section, .request-section, .response-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.headers-container .header-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.headers-container input {
+    flex: 1;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.response-body {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.response-info {
+    margin-bottom: 15px;
+}
+
+#responseBody {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.jwt-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.jwt-tabs {
+    margin-bottom: 15px;
+}
+
+.jwt-tabs button {
+    padding: 8px 15px;
+    margin-right: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.jwt-tabs button.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.jwt-content {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.jwt-result {
+    margin-top: 15px;
+}
+
+.saved-requests-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.save-request {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+#requestsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#requestsTable th,
+#requestsTable td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#requestsTable th {
+    background-color: #f5f5f5;
+}
+
+.request-actions {
+    display: flex;
+    gap: 5px;
+}
+
+/* 기존 스타일 유지하면서 새로운 레이아웃 스타일 추가 */
+.layout {
+    display: flex;
+    min-height: 100vh;
+    gap: 20px;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 350px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.main-content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* JWT 섹션 스타일 수정 */
+.jwt-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.jwt-section textarea {
+    min-height: 80px;
+}
+
+/* 요청 섹션 스타일 개선 */
+.request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.save-request {
+    display: flex;
+    gap: 10px;
+}
+
+.send-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* 테이블 스타일 개선 */
+#requestsTable {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#requestsTable th {
+    background-color: #f8f9fa;
+    padding: 12px 8px;
+}
+
+#requestsTable td {
+    padding: 12px 8px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+}
+
+/* 시크릿 키 입력 그룹 스타일 */
+.secret-input-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.secret-input-group input {
+    flex: 1;
+}
+
+.toggle-secret {
+    padding: 8px;
+    background: none;
+    border: 1px solid #ddd;
+}
+
+.toggle-secret:hover {
+    background-color: #f5f5f5;
+}
+
+.verification-status {
+    margin-top: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.verification-status.verified {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.verification-status.unverified {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+/* 액션 버튼 스타일 */
+.action-button {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.action-button.load {
+    background-color: #4CAF50;
+}
+
+.action-button.edit {
+    background-color: #2196F3;
+}
+
+.action-button.delete {
+    background-color: #f44336;
+}
+
+.action-button:hover {
+    opacity: 0.9;
+}
+
+.request-actions {
+    display: flex;
+    gap: 4px;
+    white-space: nowrap;
+} 

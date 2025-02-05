@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8282:8282"
+    volumes:
+      - .:/app
+      - ./data:/data
+    environment:
+      - FLASK_ENV=development 
